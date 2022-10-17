@@ -1,0 +1,19 @@
+{
+  "version": "21.0.0",
+  "files": {
+    "679838a8311f7323d5ddc5446ff370ea6f46a9fd3609ac66badabb7b7c68c3dc": {
+      "source": {
+        "path": "Property-reserve.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-current_region": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "679838a8311f7323d5ddc5446ff370ea6f46a9fd3609ac66badabb7b7c68c3dc.json",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}
