@@ -1,5 +1,275 @@
 {
  "Resources": {
+  "PropertyApiF83F546E": {
+   "Type": "AWS::ApiGateway::RestApi",
+   "Properties": {
+    "Name": "PropertyApi"
+   },
+   "Metadata": {
+    "aws:cdk:path": "Property-reserve/PropertyApi/Resource"
+   }
+  },
+  "PropertyApiCloudWatchRole5DCDBD65": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "apigateway.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs"
+       ]
+      ]
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "Property-reserve/PropertyApi/CloudWatchRole/Resource"
+   }
+  },
+  "PropertyApiAccount6690CD93": {
+   "Type": "AWS::ApiGateway::Account",
+   "Properties": {
+    "CloudWatchRoleArn": {
+     "Fn::GetAtt": [
+      "PropertyApiCloudWatchRole5DCDBD65",
+      "Arn"
+     ]
+    }
+   },
+   "DependsOn": [
+    "PropertyApiF83F546E"
+   ],
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "Property-reserve/PropertyApi/Account"
+   }
+  },
+  "PropertyApiDeploymentC43FABB3d4763b99a39b68d450cfeb389fe608fe": {
+   "Type": "AWS::ApiGateway::Deployment",
+   "Properties": {
+    "RestApiId": {
+     "Ref": "PropertyApiF83F546E"
+    },
+    "Description": "Automatically created by the RestApi construct"
+   },
+   "DependsOn": [
+    "PropertyApihelloGETC23D5417",
+    "PropertyApihello48AB3EFD"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "Property-reserve/PropertyApi/Deployment/Resource"
+   }
+  },
+  "PropertyApiDeploymentStageprod93B9B875": {
+   "Type": "AWS::ApiGateway::Stage",
+   "Properties": {
+    "RestApiId": {
+     "Ref": "PropertyApiF83F546E"
+    },
+    "DeploymentId": {
+     "Ref": "PropertyApiDeploymentC43FABB3d4763b99a39b68d450cfeb389fe608fe"
+    },
+    "StageName": "prod"
+   },
+   "DependsOn": [
+    "PropertyApiAccount6690CD93"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "Property-reserve/PropertyApi/DeploymentStage.prod/Resource"
+   }
+  },
+  "PropertyApihello48AB3EFD": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Fn::GetAtt": [
+      "PropertyApiF83F546E",
+      "RootResourceId"
+     ]
+    },
+    "PathPart": "hello",
+    "RestApiId": {
+     "Ref": "PropertyApiF83F546E"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "Property-reserve/PropertyApi/Default/hello/Resource"
+   }
+  },
+  "PropertyApihelloGETApiPermissionPropertyreservePropertyApi67FAD689GEThelloAD95C035": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "helloLambda79DCE371",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:",
+       {
+        "Ref": "AWS::Region"
+       },
+       ":",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "PropertyApiF83F546E"
+       },
+       "/",
+       {
+        "Ref": "PropertyApiDeploymentStageprod93B9B875"
+       },
+       "/GET/hello"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "Property-reserve/PropertyApi/Default/hello/GET/ApiPermission.PropertyreservePropertyApi67FAD689.GET..hello"
+   }
+  },
+  "PropertyApihelloGETApiPermissionTestPropertyreservePropertyApi67FAD689GEThelloF37693F8": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "helloLambda79DCE371",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:",
+       {
+        "Ref": "AWS::Region"
+       },
+       ":",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "PropertyApiF83F546E"
+       },
+       "/test-invoke-stage/GET/hello"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "Property-reserve/PropertyApi/Default/hello/GET/ApiPermission.Test.PropertyreservePropertyApi67FAD689.GET..hello"
+   }
+  },
+  "PropertyApihelloGETC23D5417": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "GET",
+    "ResourceId": {
+     "Ref": "PropertyApihello48AB3EFD"
+    },
+    "RestApiId": {
+     "Ref": "PropertyApiF83F546E"
+    },
+    "AuthorizationType": "NONE",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:",
+        {
+         "Ref": "AWS::Region"
+        },
+        ":lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "helloLambda79DCE371",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "Property-reserve/PropertyApi/Default/hello/GET/Resource"
+   }
+  },
+  "PropertyTable0DBB5666": {
+   "Type": "AWS::DynamoDB::Table",
+   "Properties": {
+    "KeySchema": [
+     {
+      "AttributeName": "propertyId",
+      "KeyType": "HASH"
+     }
+    ],
+    "AttributeDefinitions": [
+     {
+      "AttributeName": "propertyId",
+      "AttributeType": "S"
+     }
+    ],
+    "ProvisionedThroughput": {
+     "ReadCapacityUnits": 5,
+     "WriteCapacityUnits": 5
+    },
+    "TableName": "PropertyTable"
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "Property-reserve/PropertyTable/Resource"
+   }
+  },
   "helloLambdaServiceRoleBB046714": {
    "Type": "AWS::IAM::Role",
    "Properties": {
@@ -65,12 +335,40 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/zWMSQ6DMAwA38I9uKUL94LUB9AHIJOkyCyOhJP2EPH3BlBPY4/lucCthHOGX8m1GfOJOogvj3pUSbVxwrkzCPEZWHtyrOo3/+dVEc4QGzfZTW9clVxbFLFe4LEh7VAFPVpfoaTzLlO/J+73JysuLHoP1I4NHWF2xsIgp09RQnGHIhuEKF8Ce5otNAd/NUqJxbsAAAA="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WQT0/DMAzFP8vuqaH82b0b4oZAg/vkJmZkbZKqTpiqqt8dZwFtnPx7T86znTt4WMPtCk9cadNVvW1hfo+oOyXWfsbBHjDSCSeYd8SxGazafvorbLQOyUf1REMfJkeC4l4pSTtQ9grI05BGTRvki/jNLPxC8SuYbBValEUn40Nf+qQuqkfXGoRZjDcanWW2wavn5HXMIPYfL8pMHl0wctkHtiXkDIvi+z0yU2RochENm6Q7inm7JTe+pjikeFn03Jcvsf7wb2vhbfDGlpE+GIIj33zXa6gfoV4d2dpqlI+yjmBX6g90N8xrfAEAAA=="
    },
    "Metadata": {
     "aws:cdk:path": "Property-reserve/CDKMetadata/Default"
    },
    "Condition": "CDKMetadataAvailable"
+  }
+ },
+ "Outputs": {
+  "PropertyApiEndpoint1F3554A3": {
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "https://",
+      {
+       "Ref": "PropertyApiF83F546E"
+      },
+      ".execute-api.",
+      {
+       "Ref": "AWS::Region"
+      },
+      ".",
+      {
+       "Ref": "AWS::URLSuffix"
+      },
+      "/",
+      {
+       "Ref": "PropertyApiDeploymentStageprod93B9B875"
+      },
+      "/"
+     ]
+    ]
+   }
   }
  },
  "Conditions": {
