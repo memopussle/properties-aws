@@ -23,7 +23,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/cdc3771d831247a7fca895df1da8af635928236e46e343354e199993e4949787.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c8d41dd6eee51847ec81acce4ec667b19f79c0202a812dfd34b75a9d4156c2cb.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -61,7 +61,7 @@
         "/Property-reserve/PropertyApi/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "PropertyApiDeploymentC43FABB3d4763b99a39b68d450cfeb389fe608fe"
+            "data": "PropertyApiDeploymentC43FABB34eaedc832d303326bd783b62209acd44"
           }
         ],
         "/Property-reserve/PropertyApi/DeploymentStage.prod/Resource": [
@@ -114,22 +114,16 @@
             "data": "PropertyTable0DBB5666"
           }
         ],
-        "/Property-reserve/helloLambda/ServiceRole/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "helloLambdaServiceRoleBB046714"
-          }
-        ],
-        "/Property-reserve/helloLambda/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "helloLambda79DCE371"
-          }
-        ],
         "/Property-reserve/helloLambdaNodeJs/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "helloLambdaNodeJsServiceRole17C143C3"
+          }
+        ],
+        "/Property-reserve/helloLambdaNodeJs/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "helloLambdaNodeJsServiceRoleDefaultPolicy14D90D8C"
           }
         ],
         "/Property-reserve/helloLambdaNodeJs/Resource": [

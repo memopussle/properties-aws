@@ -24,3 +24,14 @@
 ```sh
 npm install --save-dev esbuild@0
 ```
+
+
+## CloudWatch
+
+- Everytime Lambda is executed, it will create a log in CloudWatch
+- It will record everything happen in execution 
+- We can use it to debug or when things don't work
+
+## AWS SDK (Software Development Kit)
+
+- AWS SDK helps simplify coding by providing JavaScript objects for AWS Services. It allows developers **access AWS from Javascript Code**
