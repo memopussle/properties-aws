@@ -2,7 +2,7 @@ import { Stack } from "aws-cdk-lib";
 import {AttributeType, Table} from "aws-cdk-lib/aws-dynamodb"
 
 
-// GenericTable is used to declutter PropertyStack.ts. dedicate to make a table in dynamo
+// GenericTable is used to declutter PropertyStack.ts. dedicate to make a table in dynamodb table
 
 
 export class GenericTable {

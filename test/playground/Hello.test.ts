@@ -1,3 +1,9 @@
 import { handler } from '../../services/PropertyTable/Create'
 
-handler({} as any, {} as any)
+const event = {
+    body: {
+      address: "1 Avenue Auckland"
+    }
+} // passing event as argument in handler function
+
+handler(event as any, {} as any)
