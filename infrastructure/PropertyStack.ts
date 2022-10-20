@@ -26,7 +26,7 @@ export class PropertyStack extends Stack {
 
    // deploy hello.ts using node-lambda
     const helloLambdaNodeJs = new NodejsFunction(this, "helloLambdaNodeJs", {
-      entry: join(__dirname, "..", "services", "noyde-lambda", 'hello.ts'), 
+      entry: join(__dirname, "..", "services", "node-lambda", 'hello.ts'), 
       handler: 'handler'
     });
 
@@ -34,7 +34,7 @@ export class PropertyStack extends Stack {
     const s3ListPolicy = new PolicyStatement();
 
     //doc: s3 actions
-    s3ListPolicy.addActions('s3:ListAllMyBuckets')
+    s3ListPolicy.addActions("s3:ListAllMyBuckets");
     s3ListPolicy.addResources("*");
     // attach permission to helloLambda
     helloLambdaNodeJs.addToRolePolicy(s3ListPolicy)

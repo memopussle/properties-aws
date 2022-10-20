@@ -11,7 +11,7 @@ async function handler(event: any, context: any) {
     console.log(event)
     return {
         statusCode: 200,
-        body: "Here our S3 buckets" + JSON.stringify(buckets.Buckets)
+        body: JSON.stringify(buckets.Owner)
     }
 
     // list our s3 bucket inside lambda

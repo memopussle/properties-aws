@@ -335,7 +335,7 @@
      "S3Bucket": {
       "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
      },
-     "S3Key": "b5613e2b6314a64811aa15a5affb44694ea6193dffa15833e397bcbf9e6b08cf.zip"
+     "S3Key": "2524f14d1e8f01fcd1a9cc844d70f3ec4fb11cc7b4016ad8659248193be28cb0.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -357,7 +357,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "Property-reserve/helloLambdaNodeJs/Resource",
-    "aws:asset:path": "asset.b5613e2b6314a64811aa15a5affb44694ea6193dffa15833e397bcbf9e6b08cf",
+    "aws:asset:path": "asset.2524f14d1e8f01fcd1a9cc844d70f3ec4fb11cc7b4016ad8659248193be28cb0",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }
