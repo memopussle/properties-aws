@@ -16,14 +16,7 @@ export class PropertyStack extends Stack {
     // use scope and id from super class Stack
     super(scope, id, props);
 
-    // create a lambda function in clouFormation called helloLambda. deploy hello.js
-    // const helloLambda = new LambdaFunction(this, "helloLambda", {
-    //   runtime: Runtime.NODEJS_16_X,
-    //   code: Code.fromAsset(join(__dirname, "..", "services", "hello")), // path to deployed file
-    //   handler: "hello.main",
-    // });
-
-
+    
    // deploy hello.ts using node-lambda
     const helloLambdaNodeJs = new NodejsFunction(this, "helloLambdaNodeJs", {
       entry: join(__dirname, "..", "services", "node-lambda", 'hello.ts'), 

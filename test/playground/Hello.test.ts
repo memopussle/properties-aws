@@ -1,3 +1,3 @@
-import { handler } from '../../services/node-lambda/hello'
+import { handler } from '../../services/PropertyTable/Create'
 
-handler({}, {})
+handler({} as any, {} as any)
