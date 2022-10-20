@@ -528,6 +528,123 @@
               "version": "2.46.0"
             }
           },
+          "helloLambdaNodeJs": {
+            "id": "helloLambdaNodeJs",
+            "path": "Property-reserve/helloLambdaNodeJs",
+            "children": {
+              "ServiceRole": {
+                "id": "ServiceRole",
+                "path": "Property-reserve/helloLambdaNodeJs/ServiceRole",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "Property-reserve/helloLambdaNodeJs/ServiceRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                      "version": "2.46.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Role",
+                  "version": "2.46.0"
+                }
+              },
+              "Code": {
+                "id": "Code",
+                "path": "Property-reserve/helloLambdaNodeJs/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "Property-reserve/helloLambdaNodeJs/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.46.0"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "Property-reserve/helloLambdaNodeJs/Code/AssetBucket",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.46.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.46.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "Property-reserve/helloLambdaNodeJs/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                  "aws:cdk:cloudformation:props": {
+                    "code": {
+                      "s3Bucket": {
+                        "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+                      },
+                      "s3Key": "087073834ffb4fb258cc2171f32b8d27a63ad93a5b2c1f0cbfaa38fead5847ca.zip"
+                    },
+                    "role": {
+                      "Fn::GetAtt": [
+                        "helloLambdaNodeJsServiceRole17C143C3",
+                        "Arn"
+                      ]
+                    },
+                    "environment": {
+                      "variables": {
+                        "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+                      }
+                    },
+                    "handler": "index.handler",
+                    "runtime": "nodejs14.x"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                  "version": "2.46.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_lambda_nodejs.NodejsFunction",
+              "version": "2.46.0"
+            }
+          },
           "CDKMetadata": {
             "id": "CDKMetadata",
             "path": "Property-reserve/CDKMetadata",
