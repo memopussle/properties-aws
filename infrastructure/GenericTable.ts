@@ -28,7 +28,7 @@ export class GenericTable {
   private updateLambda: NodejsFunction | undefined;
   private deleteLambda: NodejsFunction | undefined;
 
-    // create lambda intergration for each method
+  // create lambda intergration for each method
   public createLambdaIntergration: LambdaIntegration;
   public readLambdaIntergration: LambdaIntegration;
   public updateLambdaIntergration: LambdaIntegration;
@@ -41,9 +41,11 @@ export class GenericTable {
     this.initialize();
   }
 
-  // seperate to organize logic
+  // seperate to organize logic. which function should be called first
   private initialize() {
     this.createTable();
+    this.createLambdas();
+    this.grantTableRights();
   }
 
   //doc: aws-cdk/aws-dynamodb. create a new dynamodb table with dynamic values based on files linking to dynamodb
@@ -57,7 +59,44 @@ export class GenericTable {
     });
   }
 
+  private createLambdas() {
+    // if createLambda path exists -> call createSingleLambda() -> createLambdaIntergration
+    if (this.props.createLambdaPath) {
+      this.createLambda = this.createSingleLambda(this.props.createLambdaPath);
+      this.createLambdaIntergration = new LambdaIntegration(this.createLambda);
+    }
+    if (this.props.readLambdaPath) {
+      this.readLambda = this.createSingleLambda(this.props.readLambdaPath);
+      this.readLambdaIntergration = new LambdaIntegration(this.readLambda);
+    }
+    if (this.props.updateLambdaPath) {
+      this.updateLambda = this.createSingleLambda(this.props.updateLambdaPath);
+      this.updateLambdaIntergration = new LambdaIntegration(this.updateLambda);
+    }
+    if (this.props.deleteLambdaPath) {
+      this.deleteLambda = this.createSingleLambda(this.props.deleteLambdaPath);
+      this.deleteLambdaIntergration = new LambdaIntegration(this.deleteLambda);
+    }
+  }
 
+  //grant right forlambdas to access table
+  private grantTableRights() {
+    if (this.createLambda) {
+      this.table.grantWriteData(this.createLambda);
+    }
+    if (this.readLambda) {
+      this.table.grantReadData(this.readLambda);
+    }
+    if (this.updateLambda) {
+      this.table.grantWriteData(this.updateLambda);
+    }
+    if (this.deleteLambda) {
+      this.table.grantWriteData(this.deleteLambda);
+    }
+  }
+
+  // specify paths to files in PropertyTable dynamically
+  // all variables can be found in class NodejsFunction document
   private createSingleLambda(lambdaName: string): NodejsFunction {
     const lambdaId = `${this.props.tableName}-${lambdaName}`;
     return new NodejsFunction(this.stack, lambdaId, {
@@ -66,9 +105,14 @@ export class GenericTable {
         "..",
         "services",
         this.props.tableName,
-        `${lambdaName}.ts` // specify path to our files in services
+        `${lambdaName}.ts`
       ),
       handler: "handler",
+      functionName: lambdaId,
+      environment: {
+        TABLE_NAME: this.props.tableName,
+        PRIMARY_KEY: this.props.primaryKey,
+      },
     });
   }
 }

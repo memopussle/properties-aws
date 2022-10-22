@@ -23,7 +23,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/bcda8319a8c88c2138d34d206f9a18355aec2e86dfa13dbb2363755dcdae008e.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/4660bee9e3fd22f01207c864574157906915aa16364f130c323c257a4474b164.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -61,7 +61,7 @@
         "/Property-reserve/PropertyApi/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "PropertyApiDeploymentC43FABB34eaedc832d303326bd783b62209acd44"
+            "data": "PropertyApiDeploymentC43FABB3f3d63425a24f90d81bc1c94340cf94af"
           }
         ],
         "/Property-reserve/PropertyApi/DeploymentStage.prod/Resource": [
@@ -100,6 +100,30 @@
             "data": "PropertyApihelloGETC23D5417"
           }
         ],
+        "/Property-reserve/PropertyApi/Default/property/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PropertyApiproperty15481BE3"
+          }
+        ],
+        "/Property-reserve/PropertyApi/Default/property/POST/ApiPermission.PropertyreservePropertyApi67FAD689.POST..property": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PropertyApipropertyPOSTApiPermissionPropertyreservePropertyApi67FAD689POSTproperty0233BC8A"
+          }
+        ],
+        "/Property-reserve/PropertyApi/Default/property/POST/ApiPermission.Test.PropertyreservePropertyApi67FAD689.POST..property": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PropertyApipropertyPOSTApiPermissionTestPropertyreservePropertyApi67FAD689POSTpropertyDEAC6AD6"
+          }
+        ],
+        "/Property-reserve/PropertyApi/Default/property/POST/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PropertyApipropertyPOST317C6296"
+          }
+        ],
         "/Property-reserve/PropertyTable": [
           {
             "type": "aws:cdk:hasPhysicalName",
@@ -112,6 +136,24 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "PropertyTable0DBB5666"
+          }
+        ],
+        "/Property-reserve/PropertyTable-Create/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PropertyTableCreateServiceRole5A78E2A5"
+          }
+        ],
+        "/Property-reserve/PropertyTable-Create/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PropertyTableCreateServiceRoleDefaultPolicy0FF1B51F"
+          }
+        ],
+        "/Property-reserve/PropertyTable-Create/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PropertyTableCreate092839E4"
           }
         ],
         "/Property-reserve/helloLambdaNodeJs/ServiceRole/Resource": [

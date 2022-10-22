@@ -3,7 +3,7 @@ import { RestApi, LambdaIntegration } from "aws-cdk-lib/aws-apigateway";
 import { Construct } from "constructs";
 import { join } from "path";
 import { GenericTable } from "./GenericTable";
-import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs"; // use bundler nodejs to convert ts file to js
+import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs"; // creates a Lambda function with automatic transpiling and bundling of TypeScript or Javascript code. 
 import { PolicyStatement } from "aws-cdk-lib/aws-iam";
 
 export class PropertyStack extends Stack {
@@ -15,14 +15,14 @@ export class PropertyStack extends Stack {
   private propertyTable = new GenericTable(this, {
     tableName: "PropertyTable",
     primaryKey: "propertyId",
-    createLambdaPath: 'Create'
+    createLambdaPath: "Create",
   });
 
   constructor(scope: Construct, id: string, props: StackProps) {
     // use scope and id from super class Stack
     super(scope, id, props);
 
-    // deploy hello.ts using node-lambda
+    //finding hello.ts file in PropertyTable 
     const helloLambdaNodeJs = new NodejsFunction(this, "helloLambdaNodeJs", {
       entry: join(__dirname, "..", "services", "node-lambda", "hello.ts"),
       handler: "handler",
@@ -41,7 +41,14 @@ export class PropertyStack extends Stack {
     const helloLambdaIntergration = new LambdaIntegration(helloLambdaNodeJs);
     // https://19ufnv5k3b.execute-api.ap-southeast-2.amazonaws.com/prod/hello -> "hello from Lambda!"
     const helloLambdaResource = this.api.root.addResource("hello");
-    // add get method
+    // specify get method
     helloLambdaResource.addMethod("GET", helloLambdaIntergration);
+
+    // Property intergration /deploy POST method
+    const propertyResource = this.api.root.addResource("property");
+    propertyResource.addMethod(
+      "POST",
+      this.propertyTable.createLambdaIntergration
+    );
   }
 }

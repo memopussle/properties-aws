@@ -8,6 +8,7 @@ import {
 } from "aws-lambda"; // Lambda Proxy Intergration: intergrate API route with lambda function
 import { v4 } from "uuid";
 
+const TABLE_NAME = process.env.TABLE_NAME;
 const dbClient = new DynamoDB.DocumentClient(); //Creates a DynamoDB document client with a set of configuration options.
 
 const handler = async (
@@ -27,7 +28,7 @@ const handler = async (
 
   try {
     //DocumentClient.put() : see DocumentClient.put() aws document
-    await dbClient.put({ TableName: "PropertyTable", Item: item }).promise();
+    await dbClient.put({ TableName: TABLE_NAME!, Item: item }).promise();
   } catch (error) {
     if (error instanceof Error)
       result.body = JSON.stringify({ message: error.message });

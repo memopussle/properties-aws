@@ -2,3 +2,12 @@
 
 GET {{endpoint}}/hello/
 ###
+
+POST {{endpoint}}/property/
+Content-Type: application/json
+
+{
+    "address": "4 East Coast Road, Queenstown, Auckland",
+    "status": "Pending"
+}
+###

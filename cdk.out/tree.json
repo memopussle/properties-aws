@@ -143,7 +143,7 @@
                           "Ref": "PropertyApiF83F546E"
                         },
                         "deploymentId": {
-                          "Ref": "PropertyApiDeploymentC43FABB34eaedc832d303326bd783b62209acd44"
+                          "Ref": "PropertyApiDeploymentC43FABB3f3d63425a24f90d81bc1c94340cf94af"
                         },
                         "stageName": "prod"
                       }
@@ -355,6 +355,191 @@
                       "fqn": "aws-cdk-lib.aws_apigateway.Resource",
                       "version": "2.46.0"
                     }
+                  },
+                  "property": {
+                    "id": "property",
+                    "path": "Property-reserve/PropertyApi/Default/property",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "Property-reserve/PropertyApi/Default/property/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
+                          "aws:cdk:cloudformation:props": {
+                            "parentId": {
+                              "Fn::GetAtt": [
+                                "PropertyApiF83F546E",
+                                "RootResourceId"
+                              ]
+                            },
+                            "pathPart": "property",
+                            "restApiId": {
+                              "Ref": "PropertyApiF83F546E"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.CfnResource",
+                          "version": "2.46.0"
+                        }
+                      },
+                      "POST": {
+                        "id": "POST",
+                        "path": "Property-reserve/PropertyApi/Default/property/POST",
+                        "children": {
+                          "ApiPermission.PropertyreservePropertyApi67FAD689.POST..property": {
+                            "id": "ApiPermission.PropertyreservePropertyApi67FAD689.POST..property",
+                            "path": "Property-reserve/PropertyApi/Default/property/POST/ApiPermission.PropertyreservePropertyApi67FAD689.POST..property",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                              "aws:cdk:cloudformation:props": {
+                                "action": "lambda:InvokeFunction",
+                                "functionName": {
+                                  "Fn::GetAtt": [
+                                    "PropertyTableCreate092839E4",
+                                    "Arn"
+                                  ]
+                                },
+                                "principal": "apigateway.amazonaws.com",
+                                "sourceArn": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":execute-api:",
+                                      {
+                                        "Ref": "AWS::Region"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "AWS::AccountId"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "PropertyApiF83F546E"
+                                      },
+                                      "/",
+                                      {
+                                        "Ref": "PropertyApiDeploymentStageprod93B9B875"
+                                      },
+                                      "/POST/property"
+                                    ]
+                                  ]
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                              "version": "2.46.0"
+                            }
+                          },
+                          "ApiPermission.Test.PropertyreservePropertyApi67FAD689.POST..property": {
+                            "id": "ApiPermission.Test.PropertyreservePropertyApi67FAD689.POST..property",
+                            "path": "Property-reserve/PropertyApi/Default/property/POST/ApiPermission.Test.PropertyreservePropertyApi67FAD689.POST..property",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                              "aws:cdk:cloudformation:props": {
+                                "action": "lambda:InvokeFunction",
+                                "functionName": {
+                                  "Fn::GetAtt": [
+                                    "PropertyTableCreate092839E4",
+                                    "Arn"
+                                  ]
+                                },
+                                "principal": "apigateway.amazonaws.com",
+                                "sourceArn": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":execute-api:",
+                                      {
+                                        "Ref": "AWS::Region"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "AWS::AccountId"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "PropertyApiF83F546E"
+                                      },
+                                      "/test-invoke-stage/POST/property"
+                                    ]
+                                  ]
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                              "version": "2.46.0"
+                            }
+                          },
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "Property-reserve/PropertyApi/Default/property/POST/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                              "aws:cdk:cloudformation:props": {
+                                "httpMethod": "POST",
+                                "resourceId": {
+                                  "Ref": "PropertyApiproperty15481BE3"
+                                },
+                                "restApiId": {
+                                  "Ref": "PropertyApiF83F546E"
+                                },
+                                "authorizationType": "NONE",
+                                "integration": {
+                                  "type": "AWS_PROXY",
+                                  "uri": {
+                                    "Fn::Join": [
+                                      "",
+                                      [
+                                        "arn:",
+                                        {
+                                          "Ref": "AWS::Partition"
+                                        },
+                                        ":apigateway:",
+                                        {
+                                          "Ref": "AWS::Region"
+                                        },
+                                        ":lambda:path/2015-03-31/functions/",
+                                        {
+                                          "Fn::GetAtt": [
+                                            "PropertyTableCreate092839E4",
+                                            "Arn"
+                                          ]
+                                        },
+                                        "/invocations"
+                                      ]
+                                    ]
+                                  },
+                                  "integrationHttpMethod": "POST"
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_apigateway.CfnMethod",
+                              "version": "2.46.0"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.Method",
+                          "version": "2.46.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.Resource",
+                      "version": "2.46.0"
+                    }
                   }
                 },
                 "constructInfo": {
@@ -413,6 +598,181 @@
             },
             "constructInfo": {
               "fqn": "aws-cdk-lib.aws_dynamodb.Table",
+              "version": "2.46.0"
+            }
+          },
+          "PropertyTable-Create": {
+            "id": "PropertyTable-Create",
+            "path": "Property-reserve/PropertyTable-Create",
+            "children": {
+              "ServiceRole": {
+                "id": "ServiceRole",
+                "path": "Property-reserve/PropertyTable-Create/ServiceRole",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "Property-reserve/PropertyTable-Create/ServiceRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                      "version": "2.46.0"
+                    }
+                  },
+                  "DefaultPolicy": {
+                    "id": "DefaultPolicy",
+                    "path": "Property-reserve/PropertyTable-Create/ServiceRole/DefaultPolicy",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "Property-reserve/PropertyTable-Create/ServiceRole/DefaultPolicy/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                          "aws:cdk:cloudformation:props": {
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": [
+                                    "dynamodb:BatchWriteItem",
+                                    "dynamodb:PutItem",
+                                    "dynamodb:UpdateItem",
+                                    "dynamodb:DeleteItem",
+                                    "dynamodb:DescribeTable"
+                                  ],
+                                  "Effect": "Allow",
+                                  "Resource": [
+                                    {
+                                      "Fn::GetAtt": [
+                                        "PropertyTable0DBB5666",
+                                        "Arn"
+                                      ]
+                                    },
+                                    {
+                                      "Ref": "AWS::NoValue"
+                                    }
+                                  ]
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "policyName": "PropertyTableCreateServiceRoleDefaultPolicy0FF1B51F",
+                            "roles": [
+                              {
+                                "Ref": "PropertyTableCreateServiceRole5A78E2A5"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                          "version": "2.46.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.Policy",
+                      "version": "2.46.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Role",
+                  "version": "2.46.0"
+                }
+              },
+              "Code": {
+                "id": "Code",
+                "path": "Property-reserve/PropertyTable-Create/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "Property-reserve/PropertyTable-Create/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.46.0"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "Property-reserve/PropertyTable-Create/Code/AssetBucket",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.46.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.46.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "Property-reserve/PropertyTable-Create/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                  "aws:cdk:cloudformation:props": {
+                    "code": {
+                      "s3Bucket": {
+                        "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+                      },
+                      "s3Key": "bb0e596700d196d7eb6f644749c8fba1a5af1d4bff7395b3cd1dda014243cb5a.zip"
+                    },
+                    "role": {
+                      "Fn::GetAtt": [
+                        "PropertyTableCreateServiceRole5A78E2A5",
+                        "Arn"
+                      ]
+                    },
+                    "environment": {
+                      "variables": {
+                        "TABLE_NAME": "PropertyTable",
+                        "PRIMARY_KEY": "propertyId",
+                        "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+                      }
+                    },
+                    "functionName": "PropertyTable-Create",
+                    "handler": "index.handler",
+                    "runtime": "nodejs14.x"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                  "version": "2.46.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_lambda_nodejs.NodejsFunction",
               "version": "2.46.0"
             }
           },
@@ -544,7 +904,7 @@
                       "s3Bucket": {
                         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                       },
-                      "s3Key": "2524f14d1e8f01fcd1a9cc844d70f3ec4fb11cc7b4016ad8659248193be28cb0.zip"
+                      "s3Key": "7d312edecc9a203cc177584cbe9868590cb28f87b57c9620ea1034443326691b.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
