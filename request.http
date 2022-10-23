@@ -3,6 +3,9 @@
 GET {{endpoint}}/hello/
 ###
 
+GET {{endpoint}}/property?propertyId=a379fcd8-48eb-450f-ad76-350616f2a583
+###
+
 POST {{endpoint}}/property/
 Content-Type: application/json
 

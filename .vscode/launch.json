@@ -18,7 +18,8 @@
             ],
             "env": {
                 "AWS_REGION": "ap-southeast-2",
-                "TABLE_NAME": "PropertyTable"
+                "TABLE_NAME": "PropertyTable",
+                "PRIMARY_KEY": "propertyId"
             }
         }
     ]

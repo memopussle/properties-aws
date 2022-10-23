@@ -64,7 +64,7 @@
     "aws:cdk:path": "Property-reserve/PropertyApi/Account"
    }
   },
-  "PropertyApiDeploymentC43FABB3f3d63425a24f90d81bc1c94340cf94af": {
+  "PropertyApiDeploymentC43FABB3d4bea851616201698589604a41d87f7e": {
    "Type": "AWS::ApiGateway::Deployment",
    "Properties": {
     "RestApiId": {
@@ -75,6 +75,7 @@
    "DependsOn": [
     "PropertyApihelloGETC23D5417",
     "PropertyApihello48AB3EFD",
+    "PropertyApipropertyGET744B8725",
     "PropertyApipropertyPOST317C6296",
     "PropertyApiproperty15481BE3"
    ],
@@ -89,7 +90,7 @@
      "Ref": "PropertyApiF83F546E"
     },
     "DeploymentId": {
-     "Ref": "PropertyApiDeploymentC43FABB3f3d63425a24f90d81bc1c94340cf94af"
+     "Ref": "PropertyApiDeploymentC43FABB3d4bea851616201698589604a41d87f7e"
     },
     "StageName": "prod"
    },
@@ -390,6 +391,133 @@
     "aws:cdk:path": "Property-reserve/PropertyApi/Default/property/POST/Resource"
    }
   },
+  "PropertyApipropertyGETApiPermissionPropertyreservePropertyApi67FAD689GETproperty4C0E6D78": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "PropertyTableRead2B3AE18A",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:",
+       {
+        "Ref": "AWS::Region"
+       },
+       ":",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "PropertyApiF83F546E"
+       },
+       "/",
+       {
+        "Ref": "PropertyApiDeploymentStageprod93B9B875"
+       },
+       "/GET/property"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "Property-reserve/PropertyApi/Default/property/GET/ApiPermission.PropertyreservePropertyApi67FAD689.GET..property"
+   }
+  },
+  "PropertyApipropertyGETApiPermissionTestPropertyreservePropertyApi67FAD689GETpropertyC8997483": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "PropertyTableRead2B3AE18A",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:",
+       {
+        "Ref": "AWS::Region"
+       },
+       ":",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "PropertyApiF83F546E"
+       },
+       "/test-invoke-stage/GET/property"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "Property-reserve/PropertyApi/Default/property/GET/ApiPermission.Test.PropertyreservePropertyApi67FAD689.GET..property"
+   }
+  },
+  "PropertyApipropertyGET744B8725": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "GET",
+    "ResourceId": {
+     "Ref": "PropertyApiproperty15481BE3"
+    },
+    "RestApiId": {
+     "Ref": "PropertyApiF83F546E"
+    },
+    "AuthorizationType": "NONE",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:",
+        {
+         "Ref": "AWS::Region"
+        },
+        ":lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "PropertyTableRead2B3AE18A",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "Property-reserve/PropertyApi/Default/property/GET/Resource"
+   }
+  },
   "PropertyTable0DBB5666": {
    "Type": "AWS::DynamoDB::Table",
    "Properties": {
@@ -524,6 +652,120 @@
    "Metadata": {
     "aws:cdk:path": "Property-reserve/PropertyTable-Create/Resource",
     "aws:asset:path": "asset.bb0e596700d196d7eb6f644749c8fba1a5af1d4bff7395b3cd1dda014243cb5a",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "PropertyTableReadServiceRoleA97AEB25": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "Property-reserve/PropertyTable-Read/ServiceRole/Resource"
+   }
+  },
+  "PropertyTableReadServiceRoleDefaultPolicy5573176D": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:Query",
+        "dynamodb:GetItem",
+        "dynamodb:Scan",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:DescribeTable"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "PropertyTable0DBB5666",
+          "Arn"
+         ]
+        },
+        {
+         "Ref": "AWS::NoValue"
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "PropertyTableReadServiceRoleDefaultPolicy5573176D",
+    "Roles": [
+     {
+      "Ref": "PropertyTableReadServiceRoleA97AEB25"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "Property-reserve/PropertyTable-Read/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "PropertyTableRead2B3AE18A": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+     },
+     "S3Key": "5f47f535dcb1a2e9bf6647f91bf35f331f3a1da794d3fb161e4108ee16269b6b.zip"
+    },
+    "Role": {
+     "Fn::GetAtt": [
+      "PropertyTableReadServiceRoleA97AEB25",
+      "Arn"
+     ]
+    },
+    "Environment": {
+     "Variables": {
+      "TABLE_NAME": "PropertyTable",
+      "PRIMARY_KEY": "propertyId",
+      "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+     }
+    },
+    "FunctionName": "PropertyTable-Read",
+    "Handler": "index.handler",
+    "Runtime": "nodejs14.x"
+   },
+   "DependsOn": [
+    "PropertyTableReadServiceRoleDefaultPolicy5573176D",
+    "PropertyTableReadServiceRoleA97AEB25"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "Property-reserve/PropertyTable-Read/Resource",
+    "aws:asset:path": "asset.5f47f535dcb1a2e9bf6647f91bf35f331f3a1da794d3fb161e4108ee16269b6b",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }

@@ -16,6 +16,7 @@ export class PropertyStack extends Stack {
     tableName: "PropertyTable",
     primaryKey: "propertyId",
     createLambdaPath: "Create",
+    readLambdaPath: "Read"
   });
 
   constructor(scope: Construct, id: string, props: StackProps) {
@@ -50,5 +51,7 @@ export class PropertyStack extends Stack {
       "POST",
       this.propertyTable.createLambdaIntergration
     );
+
+      propertyResource.addMethod("GET", this.propertyTable.readLambdaIntergration);
   }
 }
