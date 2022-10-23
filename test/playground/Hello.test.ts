@@ -1,4 +1,4 @@
-import { handler } from '../../services/PropertyTable/Create'
+import { handler } from '../../services/PropertyTable/Read'
 
 const event = {
     body: {
@@ -6,4 +6,9 @@ const event = {
     }
 } // passing event as argument in handler function
 
-handler(event as any, {} as any)
+
+
+const result = handler({} as any, {} as any).then((apiResult) => {
+  const item = JSON.parse(apiResult.body)
+  console.log(123);
+})

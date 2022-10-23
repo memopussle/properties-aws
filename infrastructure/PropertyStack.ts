@@ -22,7 +22,7 @@ export class PropertyStack extends Stack {
     // use scope and id from super class Stack
     super(scope, id, props);
 
-    //finding hello.ts file in PropertyTable 
+    //finding hello.ts file in PropertyTable
     const helloLambdaNodeJs = new NodejsFunction(this, "helloLambdaNodeJs", {
       entry: join(__dirname, "..", "services", "node-lambda", "hello.ts"),
       handler: "handler",
@@ -37,7 +37,7 @@ export class PropertyStack extends Stack {
     // attach permission to helloLambda
     helloLambdaNodeJs.addToRolePolicy(s3ListPolicy);
 
-    // link helloLambda to API gateway : GET, PUT, POST, DELETE. like backend
+    // link helloLambda to API gateway. The input to the integrated Lambda function can be expressed as any combination of request headers, path variables, query string parameters, and body
     const helloLambdaIntergration = new LambdaIntegration(helloLambdaNodeJs);
     // https://19ufnv5k3b.execute-api.ap-southeast-2.amazonaws.com/prod/hello -> "hello from Lambda!"
     const helloLambdaResource = this.api.root.addResource("hello");
