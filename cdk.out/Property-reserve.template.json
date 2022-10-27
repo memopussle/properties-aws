@@ -64,7 +64,7 @@
     "aws:cdk:path": "Property-reserve/PropertyApi/Account"
    }
   },
-  "PropertyApiDeploymentC43FABB3d4bea851616201698589604a41d87f7e": {
+  "PropertyApiDeploymentC43FABB3b4e6326ffc7108e5dbd0610c508c2467": {
    "Type": "AWS::ApiGateway::Deployment",
    "Properties": {
     "RestApiId": {
@@ -75,9 +75,9 @@
    "DependsOn": [
     "PropertyApihelloGETC23D5417",
     "PropertyApihello48AB3EFD",
-    "PropertyApipropertyGET744B8725",
-    "PropertyApipropertyPOST317C6296",
-    "PropertyApiproperty15481BE3"
+    "PropertyApipropertiesGETC2836DF5",
+    "PropertyApipropertiesPOSTF7FEF77B",
+    "PropertyApiproperties99C11FF2"
    ],
    "Metadata": {
     "aws:cdk:path": "Property-reserve/PropertyApi/Deployment/Resource"
@@ -90,7 +90,7 @@
      "Ref": "PropertyApiF83F546E"
     },
     "DeploymentId": {
-     "Ref": "PropertyApiDeploymentC43FABB3d4bea851616201698589604a41d87f7e"
+     "Ref": "PropertyApiDeploymentC43FABB3b4e6326ffc7108e5dbd0610c508c2467"
     },
     "StageName": "prod"
    },
@@ -246,7 +246,7 @@
     "aws:cdk:path": "Property-reserve/PropertyApi/Default/hello/GET/Resource"
    }
   },
-  "PropertyApiproperty15481BE3": {
+  "PropertyApiproperties99C11FF2": {
    "Type": "AWS::ApiGateway::Resource",
    "Properties": {
     "ParentId": {
@@ -255,16 +255,16 @@
       "RootResourceId"
      ]
     },
-    "PathPart": "property",
+    "PathPart": "properties",
     "RestApiId": {
      "Ref": "PropertyApiF83F546E"
     }
    },
    "Metadata": {
-    "aws:cdk:path": "Property-reserve/PropertyApi/Default/property/Resource"
+    "aws:cdk:path": "Property-reserve/PropertyApi/Default/properties/Resource"
    }
   },
-  "PropertyApipropertyPOSTApiPermissionPropertyreservePropertyApi67FAD689POSTproperty0233BC8A": {
+  "PropertyApipropertiesPOSTApiPermissionPropertyreservePropertyApi67FAD689POSTpropertiesBBDFB05D": {
    "Type": "AWS::Lambda::Permission",
    "Properties": {
     "Action": "lambda:InvokeFunction",
@@ -299,16 +299,16 @@
        {
         "Ref": "PropertyApiDeploymentStageprod93B9B875"
        },
-       "/POST/property"
+       "/POST/properties"
       ]
      ]
     }
    },
    "Metadata": {
-    "aws:cdk:path": "Property-reserve/PropertyApi/Default/property/POST/ApiPermission.PropertyreservePropertyApi67FAD689.POST..property"
+    "aws:cdk:path": "Property-reserve/PropertyApi/Default/properties/POST/ApiPermission.PropertyreservePropertyApi67FAD689.POST..properties"
    }
   },
-  "PropertyApipropertyPOSTApiPermissionTestPropertyreservePropertyApi67FAD689POSTpropertyDEAC6AD6": {
+  "PropertyApipropertiesPOSTApiPermissionTestPropertyreservePropertyApi67FAD689POSTpropertiesAA5360A2": {
    "Type": "AWS::Lambda::Permission",
    "Properties": {
     "Action": "lambda:InvokeFunction",
@@ -339,21 +339,21 @@
        {
         "Ref": "PropertyApiF83F546E"
        },
-       "/test-invoke-stage/POST/property"
+       "/test-invoke-stage/POST/properties"
       ]
      ]
     }
    },
    "Metadata": {
-    "aws:cdk:path": "Property-reserve/PropertyApi/Default/property/POST/ApiPermission.Test.PropertyreservePropertyApi67FAD689.POST..property"
+    "aws:cdk:path": "Property-reserve/PropertyApi/Default/properties/POST/ApiPermission.Test.PropertyreservePropertyApi67FAD689.POST..properties"
    }
   },
-  "PropertyApipropertyPOST317C6296": {
+  "PropertyApipropertiesPOSTF7FEF77B": {
    "Type": "AWS::ApiGateway::Method",
    "Properties": {
     "HttpMethod": "POST",
     "ResourceId": {
-     "Ref": "PropertyApiproperty15481BE3"
+     "Ref": "PropertyApiproperties99C11FF2"
     },
     "RestApiId": {
      "Ref": "PropertyApiF83F546E"
@@ -388,10 +388,10 @@
     }
    },
    "Metadata": {
-    "aws:cdk:path": "Property-reserve/PropertyApi/Default/property/POST/Resource"
+    "aws:cdk:path": "Property-reserve/PropertyApi/Default/properties/POST/Resource"
    }
   },
-  "PropertyApipropertyGETApiPermissionPropertyreservePropertyApi67FAD689GETproperty4C0E6D78": {
+  "PropertyApipropertiesGETApiPermissionPropertyreservePropertyApi67FAD689GETproperties953792AE": {
    "Type": "AWS::Lambda::Permission",
    "Properties": {
     "Action": "lambda:InvokeFunction",
@@ -426,16 +426,16 @@
        {
         "Ref": "PropertyApiDeploymentStageprod93B9B875"
        },
-       "/GET/property"
+       "/GET/properties"
       ]
      ]
     }
    },
    "Metadata": {
-    "aws:cdk:path": "Property-reserve/PropertyApi/Default/property/GET/ApiPermission.PropertyreservePropertyApi67FAD689.GET..property"
+    "aws:cdk:path": "Property-reserve/PropertyApi/Default/properties/GET/ApiPermission.PropertyreservePropertyApi67FAD689.GET..properties"
    }
   },
-  "PropertyApipropertyGETApiPermissionTestPropertyreservePropertyApi67FAD689GETpropertyC8997483": {
+  "PropertyApipropertiesGETApiPermissionTestPropertyreservePropertyApi67FAD689GETpropertiesCC4C470C": {
    "Type": "AWS::Lambda::Permission",
    "Properties": {
     "Action": "lambda:InvokeFunction",
@@ -466,21 +466,21 @@
        {
         "Ref": "PropertyApiF83F546E"
        },
-       "/test-invoke-stage/GET/property"
+       "/test-invoke-stage/GET/properties"
       ]
      ]
     }
    },
    "Metadata": {
-    "aws:cdk:path": "Property-reserve/PropertyApi/Default/property/GET/ApiPermission.Test.PropertyreservePropertyApi67FAD689.GET..property"
+    "aws:cdk:path": "Property-reserve/PropertyApi/Default/properties/GET/ApiPermission.Test.PropertyreservePropertyApi67FAD689.GET..properties"
    }
   },
-  "PropertyApipropertyGET744B8725": {
+  "PropertyApipropertiesGETC2836DF5": {
    "Type": "AWS::ApiGateway::Method",
    "Properties": {
     "HttpMethod": "GET",
     "ResourceId": {
-     "Ref": "PropertyApiproperty15481BE3"
+     "Ref": "PropertyApiproperties99C11FF2"
     },
     "RestApiId": {
      "Ref": "PropertyApiF83F546E"
@@ -515,7 +515,7 @@
     }
    },
    "Metadata": {
-    "aws:cdk:path": "Property-reserve/PropertyApi/Default/property/GET/Resource"
+    "aws:cdk:path": "Property-reserve/PropertyApi/Default/properties/GET/Resource"
    }
   },
   "PropertyTable0DBB5666": {
@@ -531,6 +531,28 @@
      {
       "AttributeName": "propertyId",
       "AttributeType": "S"
+     },
+     {
+      "AttributeName": "status",
+      "AttributeType": "S"
+     }
+    ],
+    "GlobalSecondaryIndexes": [
+     {
+      "IndexName": "status",
+      "KeySchema": [
+       {
+        "AttributeName": "status",
+        "KeyType": "HASH"
+       }
+      ],
+      "Projection": {
+       "ProjectionType": "ALL"
+      },
+      "ProvisionedThroughput": {
+       "ReadCapacityUnits": 5,
+       "WriteCapacityUnits": 5
+      }
      }
     ],
     "ProvisionedThroughput": {
@@ -601,7 +623,18 @@
          ]
         },
         {
-         "Ref": "AWS::NoValue"
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "PropertyTable0DBB5666",
+             "Arn"
+            ]
+           },
+           "/index/*"
+          ]
+         ]
         }
        ]
       }
@@ -715,7 +748,18 @@
          ]
         },
         {
-         "Ref": "AWS::NoValue"
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "PropertyTable0DBB5666",
+             "Arn"
+            ]
+           },
+           "/index/*"
+          ]
+         ]
         }
        ]
       }
@@ -740,7 +784,7 @@
      "S3Bucket": {
       "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
      },
-     "S3Key": "5f47f535dcb1a2e9bf6647f91bf35f331f3a1da794d3fb161e4108ee16269b6b.zip"
+     "S3Key": "593f023dd7610f1e109ecafe479418386ad79b125f74799fa455735dd1c89643.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -765,7 +809,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "Property-reserve/PropertyTable-Read/Resource",
-    "aws:asset:path": "asset.5f47f535dcb1a2e9bf6647f91bf35f331f3a1da794d3fb161e4108ee16269b6b",
+    "aws:asset:path": "asset.593f023dd7610f1e109ecafe479418386ad79b125f74799fa455735dd1c89643",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }

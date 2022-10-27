@@ -3,7 +3,7 @@ import { handler } from '../../services/PropertyTable/Read'
 
 const event: APIGatewayProxyEvent = {
   queryStringParameters: {
-    propertyId: 'a379fcd8-48eb-450f-ad76-350616f2a583'
+    status: 'Pending'
   } 
 } as any // passing event as argument in handler function
 

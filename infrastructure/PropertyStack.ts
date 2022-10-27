@@ -3,7 +3,7 @@ import { RestApi, LambdaIntegration } from "aws-cdk-lib/aws-apigateway";
 import { Construct } from "constructs";
 import { join } from "path";
 import { GenericTable } from "./GenericTable";
-import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs"; // creates a Lambda function with automatic transpiling and bundling of TypeScript or Javascript code. 
+import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs"; // creates a Lambda function with automatic transpiling and bundling of TypeScript or Javascript code.
 import { PolicyStatement } from "aws-cdk-lib/aws-iam";
 
 export class PropertyStack extends Stack {
@@ -16,7 +16,8 @@ export class PropertyStack extends Stack {
     tableName: "PropertyTable",
     primaryKey: "propertyId",
     createLambdaPath: "Create",
-    readLambdaPath: "Read"
+    readLambdaPath: "Read",
+    secondaryIndexes: ["status"],
   });
 
   constructor(scope: Construct, id: string, props: StackProps) {
@@ -46,12 +47,8 @@ export class PropertyStack extends Stack {
     helloLambdaResource.addMethod("GET", helloLambdaIntergration);
 
     // Property intergration /deploy POST method
-    const propertyResource = this.api.root.addResource("property");
-    propertyResource.addMethod(
-      "POST",
-      this.propertyTable.createLambdaIntergration
-    );
-
-      propertyResource.addMethod("GET", this.propertyTable.readLambdaIntergration);
+    const spaceResource = this.api.root.addResource("properties");
+    spaceResource.addMethod("POST", this.propertyTable.createLambdaIntegration);
+    spaceResource.addMethod("GET", this.propertyTable.readLambdaIntegration);
   }
 }

@@ -143,7 +143,7 @@
                           "Ref": "PropertyApiF83F546E"
                         },
                         "deploymentId": {
-                          "Ref": "PropertyApiDeploymentC43FABB3d4bea851616201698589604a41d87f7e"
+                          "Ref": "PropertyApiDeploymentC43FABB3b4e6326ffc7108e5dbd0610c508c2467"
                         },
                         "stageName": "prod"
                       }
@@ -356,13 +356,13 @@
                       "version": "2.46.0"
                     }
                   },
-                  "property": {
-                    "id": "property",
-                    "path": "Property-reserve/PropertyApi/Default/property",
+                  "properties": {
+                    "id": "properties",
+                    "path": "Property-reserve/PropertyApi/Default/properties",
                     "children": {
                       "Resource": {
                         "id": "Resource",
-                        "path": "Property-reserve/PropertyApi/Default/property/Resource",
+                        "path": "Property-reserve/PropertyApi/Default/properties/Resource",
                         "attributes": {
                           "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
                           "aws:cdk:cloudformation:props": {
@@ -372,7 +372,7 @@
                                 "RootResourceId"
                               ]
                             },
-                            "pathPart": "property",
+                            "pathPart": "properties",
                             "restApiId": {
                               "Ref": "PropertyApiF83F546E"
                             }
@@ -385,11 +385,11 @@
                       },
                       "POST": {
                         "id": "POST",
-                        "path": "Property-reserve/PropertyApi/Default/property/POST",
+                        "path": "Property-reserve/PropertyApi/Default/properties/POST",
                         "children": {
-                          "ApiPermission.PropertyreservePropertyApi67FAD689.POST..property": {
-                            "id": "ApiPermission.PropertyreservePropertyApi67FAD689.POST..property",
-                            "path": "Property-reserve/PropertyApi/Default/property/POST/ApiPermission.PropertyreservePropertyApi67FAD689.POST..property",
+                          "ApiPermission.PropertyreservePropertyApi67FAD689.POST..properties": {
+                            "id": "ApiPermission.PropertyreservePropertyApi67FAD689.POST..properties",
+                            "path": "Property-reserve/PropertyApi/Default/properties/POST/ApiPermission.PropertyreservePropertyApi67FAD689.POST..properties",
                             "attributes": {
                               "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
                               "aws:cdk:cloudformation:props": {
@@ -425,7 +425,7 @@
                                       {
                                         "Ref": "PropertyApiDeploymentStageprod93B9B875"
                                       },
-                                      "/POST/property"
+                                      "/POST/properties"
                                     ]
                                   ]
                                 }
@@ -436,9 +436,9 @@
                               "version": "2.46.0"
                             }
                           },
-                          "ApiPermission.Test.PropertyreservePropertyApi67FAD689.POST..property": {
-                            "id": "ApiPermission.Test.PropertyreservePropertyApi67FAD689.POST..property",
-                            "path": "Property-reserve/PropertyApi/Default/property/POST/ApiPermission.Test.PropertyreservePropertyApi67FAD689.POST..property",
+                          "ApiPermission.Test.PropertyreservePropertyApi67FAD689.POST..properties": {
+                            "id": "ApiPermission.Test.PropertyreservePropertyApi67FAD689.POST..properties",
+                            "path": "Property-reserve/PropertyApi/Default/properties/POST/ApiPermission.Test.PropertyreservePropertyApi67FAD689.POST..properties",
                             "attributes": {
                               "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
                               "aws:cdk:cloudformation:props": {
@@ -470,7 +470,7 @@
                                       {
                                         "Ref": "PropertyApiF83F546E"
                                       },
-                                      "/test-invoke-stage/POST/property"
+                                      "/test-invoke-stage/POST/properties"
                                     ]
                                   ]
                                 }
@@ -483,13 +483,13 @@
                           },
                           "Resource": {
                             "id": "Resource",
-                            "path": "Property-reserve/PropertyApi/Default/property/POST/Resource",
+                            "path": "Property-reserve/PropertyApi/Default/properties/POST/Resource",
                             "attributes": {
                               "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
                               "aws:cdk:cloudformation:props": {
                                 "httpMethod": "POST",
                                 "resourceId": {
-                                  "Ref": "PropertyApiproperty15481BE3"
+                                  "Ref": "PropertyApiproperties99C11FF2"
                                 },
                                 "restApiId": {
                                   "Ref": "PropertyApiF83F546E"
@@ -537,11 +537,11 @@
                       },
                       "GET": {
                         "id": "GET",
-                        "path": "Property-reserve/PropertyApi/Default/property/GET",
+                        "path": "Property-reserve/PropertyApi/Default/properties/GET",
                         "children": {
-                          "ApiPermission.PropertyreservePropertyApi67FAD689.GET..property": {
-                            "id": "ApiPermission.PropertyreservePropertyApi67FAD689.GET..property",
-                            "path": "Property-reserve/PropertyApi/Default/property/GET/ApiPermission.PropertyreservePropertyApi67FAD689.GET..property",
+                          "ApiPermission.PropertyreservePropertyApi67FAD689.GET..properties": {
+                            "id": "ApiPermission.PropertyreservePropertyApi67FAD689.GET..properties",
+                            "path": "Property-reserve/PropertyApi/Default/properties/GET/ApiPermission.PropertyreservePropertyApi67FAD689.GET..properties",
                             "attributes": {
                               "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
                               "aws:cdk:cloudformation:props": {
@@ -577,7 +577,7 @@
                                       {
                                         "Ref": "PropertyApiDeploymentStageprod93B9B875"
                                       },
-                                      "/GET/property"
+                                      "/GET/properties"
                                     ]
                                   ]
                                 }
@@ -588,9 +588,9 @@
                               "version": "2.46.0"
                             }
                           },
-                          "ApiPermission.Test.PropertyreservePropertyApi67FAD689.GET..property": {
-                            "id": "ApiPermission.Test.PropertyreservePropertyApi67FAD689.GET..property",
-                            "path": "Property-reserve/PropertyApi/Default/property/GET/ApiPermission.Test.PropertyreservePropertyApi67FAD689.GET..property",
+                          "ApiPermission.Test.PropertyreservePropertyApi67FAD689.GET..properties": {
+                            "id": "ApiPermission.Test.PropertyreservePropertyApi67FAD689.GET..properties",
+                            "path": "Property-reserve/PropertyApi/Default/properties/GET/ApiPermission.Test.PropertyreservePropertyApi67FAD689.GET..properties",
                             "attributes": {
                               "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
                               "aws:cdk:cloudformation:props": {
@@ -622,7 +622,7 @@
                                       {
                                         "Ref": "PropertyApiF83F546E"
                                       },
-                                      "/test-invoke-stage/GET/property"
+                                      "/test-invoke-stage/GET/properties"
                                     ]
                                   ]
                                 }
@@ -635,13 +635,13 @@
                           },
                           "Resource": {
                             "id": "Resource",
-                            "path": "Property-reserve/PropertyApi/Default/property/GET/Resource",
+                            "path": "Property-reserve/PropertyApi/Default/properties/GET/Resource",
                             "attributes": {
                               "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
                               "aws:cdk:cloudformation:props": {
                                 "httpMethod": "GET",
                                 "resourceId": {
-                                  "Ref": "PropertyApiproperty15481BE3"
+                                  "Ref": "PropertyApiproperties99C11FF2"
                                 },
                                 "restApiId": {
                                   "Ref": "PropertyApiF83F546E"
@@ -725,6 +725,28 @@
                       {
                         "attributeName": "propertyId",
                         "attributeType": "S"
+                      },
+                      {
+                        "attributeName": "status",
+                        "attributeType": "S"
+                      }
+                    ],
+                    "globalSecondaryIndexes": [
+                      {
+                        "indexName": "status",
+                        "keySchema": [
+                          {
+                            "attributeName": "status",
+                            "keyType": "HASH"
+                          }
+                        ],
+                        "projection": {
+                          "projectionType": "ALL"
+                        },
+                        "provisionedThroughput": {
+                          "readCapacityUnits": 5,
+                          "writeCapacityUnits": 5
+                        }
                       }
                     ],
                     "provisionedThroughput": {
@@ -829,7 +851,18 @@
                                       ]
                                     },
                                     {
-                                      "Ref": "AWS::NoValue"
+                                      "Fn::Join": [
+                                        "",
+                                        [
+                                          {
+                                            "Fn::GetAtt": [
+                                              "PropertyTable0DBB5666",
+                                              "Arn"
+                                            ]
+                                          },
+                                          "/index/*"
+                                        ]
+                                      ]
                                     }
                                   ]
                                 }
@@ -1007,7 +1040,18 @@
                                       ]
                                     },
                                     {
-                                      "Ref": "AWS::NoValue"
+                                      "Fn::Join": [
+                                        "",
+                                        [
+                                          {
+                                            "Fn::GetAtt": [
+                                              "PropertyTable0DBB5666",
+                                              "Arn"
+                                            ]
+                                          },
+                                          "/index/*"
+                                        ]
+                                      ]
                                     }
                                   ]
                                 }
@@ -1075,7 +1119,7 @@
                       "s3Bucket": {
                         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                       },
-                      "s3Key": "5f47f535dcb1a2e9bf6647f91bf35f331f3a1da794d3fb161e4108ee16269b6b.zip"
+                      "s3Key": "593f023dd7610f1e109ecafe479418386ad79b125f74799fa455735dd1c89643.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [

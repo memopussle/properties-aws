@@ -14,6 +14,7 @@ export interface TableProps {
   deleteLambdaPath?: string;
   tableName: string;
   primaryKey: string;
+  secondaryIndexes?: string[];
 }
 
 export class GenericTable {
@@ -29,10 +30,10 @@ export class GenericTable {
   private deleteLambda: NodejsFunction | undefined;
 
   // create lambda intergration for each method
-  public createLambdaIntergration: LambdaIntegration;
-  public readLambdaIntergration: LambdaIntegration;
-  public updateLambdaIntergration: LambdaIntegration;
-  public deleteLambdaIntergration: LambdaIntegration;
+  public createLambdaIntegration: LambdaIntegration;
+  public readLambdaIntegration: LambdaIntegration;
+  public updateLambdaIntegration: LambdaIntegration;
+  public deleteLambdaIntegration: LambdaIntegration;
 
   // assign the values GenericTable to this constructor
   public constructor(stack: Stack, props: TableProps) {
@@ -44,8 +45,26 @@ export class GenericTable {
   // seperate to organize logic. which function should be called first
   private initialize() {
     this.createTable();
+    this.addSecondaryIndexes();
     this.createLambdas();
     this.grantTableRights();
+  }
+
+  private addSecondaryIndexes() {
+
+    if (this.props.secondaryIndexes) {
+      //loop through secondary index
+      for (const secondaryIndex of this.props.secondaryIndexes) {
+        // add a global index of table
+        this.table.addGlobalSecondaryIndex({
+          indexName: secondaryIndex,
+          partitionKey: {
+            name: secondaryIndex,
+            type: AttributeType.STRING, // this mimics the options on aws website.
+          },
+        });
+         }
+       }
   }
 
   //doc: aws-cdk/aws-dynamodb. create a new dynamodb table with dynamic values based on files linking to dynamodb
@@ -61,22 +80,22 @@ export class GenericTable {
 
   private createLambdas() {
     // if createLambda path exists -> call createSingleLambda() -> createLambdaIntergration
-    if (this.props.createLambdaPath) {
-      this.createLambda = this.createSingleLambda(this.props.createLambdaPath);
-      this.createLambdaIntergration = new LambdaIntegration(this.createLambda);
-    }
-    if (this.props.readLambdaPath) {
-      this.readLambda = this.createSingleLambda(this.props.readLambdaPath);
-      this.readLambdaIntergration = new LambdaIntegration(this.readLambda);
-    }
-    if (this.props.updateLambdaPath) {
-      this.updateLambda = this.createSingleLambda(this.props.updateLambdaPath);
-      this.updateLambdaIntergration = new LambdaIntegration(this.updateLambda);
-    }
-    if (this.props.deleteLambdaPath) {
-      this.deleteLambda = this.createSingleLambda(this.props.deleteLambdaPath);
-      this.deleteLambdaIntergration = new LambdaIntegration(this.deleteLambda);
-    }
+     if (this.props.createLambdaPath) {
+       this.createLambda = this.createSingleLambda(this.props.createLambdaPath);
+       this.createLambdaIntegration = new LambdaIntegration(this.createLambda);
+     }
+     if (this.props.readLambdaPath) {
+       this.readLambda = this.createSingleLambda(this.props.readLambdaPath);
+       this.readLambdaIntegration = new LambdaIntegration(this.readLambda);
+     }
+     if (this.props.updateLambdaPath) {
+       this.updateLambda = this.createSingleLambda(this.props.updateLambdaPath);
+       this.updateLambdaIntegration = new LambdaIntegration(this.updateLambda);
+     }
+     if (this.props.deleteLambdaPath) {
+       this.deleteLambda = this.createSingleLambda(this.props.deleteLambdaPath);
+       this.deleteLambdaIntegration = new LambdaIntegration(this.deleteLambda);
+     }
   }
 
   //grant right forlambdas to access table

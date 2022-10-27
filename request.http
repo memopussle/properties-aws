@@ -3,10 +3,16 @@
 GET {{endpoint}}/hello/
 ###
 
-GET {{endpoint}}/property?propertyId=a379fcd8-48eb-450f-ad76-350616f2a583
+GET {{endpoint}}/properties?propertyId=a379fcd8-48eb-450f-ad76-350616f2a583
 ###
 
-POST {{endpoint}}/property/
+GET {{endpoint}}/properties?status=Completed
+###
+
+GET {{endpoint}}/properties
+###
+
+POST {{endpoint}}/properties/
 Content-Type: application/json
 
 {

@@ -23,7 +23,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/31239199b0a2b4ff7f800207ad029ac40bd465e23ba818d8917f6a54c677ea10.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/08337b0b14ad30e740f818eccbcea4db1bd02e4ec4658a5e7c9874721de47429.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -61,7 +61,7 @@
         "/Property-reserve/PropertyApi/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "PropertyApiDeploymentC43FABB3d4bea851616201698589604a41d87f7e"
+            "data": "PropertyApiDeploymentC43FABB3b4e6326ffc7108e5dbd0610c508c2467"
           }
         ],
         "/Property-reserve/PropertyApi/DeploymentStage.prod/Resource": [
@@ -100,46 +100,46 @@
             "data": "PropertyApihelloGETC23D5417"
           }
         ],
-        "/Property-reserve/PropertyApi/Default/property/Resource": [
+        "/Property-reserve/PropertyApi/Default/properties/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "PropertyApiproperty15481BE3"
+            "data": "PropertyApiproperties99C11FF2"
           }
         ],
-        "/Property-reserve/PropertyApi/Default/property/POST/ApiPermission.PropertyreservePropertyApi67FAD689.POST..property": [
+        "/Property-reserve/PropertyApi/Default/properties/POST/ApiPermission.PropertyreservePropertyApi67FAD689.POST..properties": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "PropertyApipropertyPOSTApiPermissionPropertyreservePropertyApi67FAD689POSTproperty0233BC8A"
+            "data": "PropertyApipropertiesPOSTApiPermissionPropertyreservePropertyApi67FAD689POSTpropertiesBBDFB05D"
           }
         ],
-        "/Property-reserve/PropertyApi/Default/property/POST/ApiPermission.Test.PropertyreservePropertyApi67FAD689.POST..property": [
+        "/Property-reserve/PropertyApi/Default/properties/POST/ApiPermission.Test.PropertyreservePropertyApi67FAD689.POST..properties": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "PropertyApipropertyPOSTApiPermissionTestPropertyreservePropertyApi67FAD689POSTpropertyDEAC6AD6"
+            "data": "PropertyApipropertiesPOSTApiPermissionTestPropertyreservePropertyApi67FAD689POSTpropertiesAA5360A2"
           }
         ],
-        "/Property-reserve/PropertyApi/Default/property/POST/Resource": [
+        "/Property-reserve/PropertyApi/Default/properties/POST/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "PropertyApipropertyPOST317C6296"
+            "data": "PropertyApipropertiesPOSTF7FEF77B"
           }
         ],
-        "/Property-reserve/PropertyApi/Default/property/GET/ApiPermission.PropertyreservePropertyApi67FAD689.GET..property": [
+        "/Property-reserve/PropertyApi/Default/properties/GET/ApiPermission.PropertyreservePropertyApi67FAD689.GET..properties": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "PropertyApipropertyGETApiPermissionPropertyreservePropertyApi67FAD689GETproperty4C0E6D78"
+            "data": "PropertyApipropertiesGETApiPermissionPropertyreservePropertyApi67FAD689GETproperties953792AE"
           }
         ],
-        "/Property-reserve/PropertyApi/Default/property/GET/ApiPermission.Test.PropertyreservePropertyApi67FAD689.GET..property": [
+        "/Property-reserve/PropertyApi/Default/properties/GET/ApiPermission.Test.PropertyreservePropertyApi67FAD689.GET..properties": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "PropertyApipropertyGETApiPermissionTestPropertyreservePropertyApi67FAD689GETpropertyC8997483"
+            "data": "PropertyApipropertiesGETApiPermissionTestPropertyreservePropertyApi67FAD689GETpropertiesCC4C470C"
           }
         ],
-        "/Property-reserve/PropertyApi/Default/property/GET/Resource": [
+        "/Property-reserve/PropertyApi/Default/properties/GET/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "PropertyApipropertyGET744B8725"
+            "data": "PropertyApipropertiesGETC2836DF5"
           }
         ],
         "/Property-reserve/PropertyTable": [
