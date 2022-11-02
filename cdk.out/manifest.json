@@ -23,7 +23,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/08337b0b14ad30e740f818eccbcea4db1bd02e4ec4658a5e7c9874721de47429.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/22d28195b7ea94a3ce06c1231770356d22f8231d5dd7d74a46d6973429feb0f7.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -61,7 +61,7 @@
         "/Property-reserve/PropertyApi/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "PropertyApiDeploymentC43FABB3b4e6326ffc7108e5dbd0610c508c2467"
+            "data": "PropertyApiDeploymentC43FABB37e4da328f0f0e79fa32614b6f129a17b"
           }
         ],
         "/Property-reserve/PropertyApi/DeploymentStage.prod/Resource": [
@@ -142,6 +142,42 @@
             "data": "PropertyApipropertiesGETC2836DF5"
           }
         ],
+        "/Property-reserve/PropertyApi/Default/properties/PUT/ApiPermission.PropertyreservePropertyApi67FAD689.PUT..properties": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PropertyApipropertiesPUTApiPermissionPropertyreservePropertyApi67FAD689PUTproperties5D240120"
+          }
+        ],
+        "/Property-reserve/PropertyApi/Default/properties/PUT/ApiPermission.Test.PropertyreservePropertyApi67FAD689.PUT..properties": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PropertyApipropertiesPUTApiPermissionTestPropertyreservePropertyApi67FAD689PUTpropertiesDCB1A81C"
+          }
+        ],
+        "/Property-reserve/PropertyApi/Default/properties/PUT/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PropertyApipropertiesPUT23A4F975"
+          }
+        ],
+        "/Property-reserve/PropertyApi/Default/properties/DELETE/ApiPermission.PropertyreservePropertyApi67FAD689.DELETE..properties": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PropertyApipropertiesDELETEApiPermissionPropertyreservePropertyApi67FAD689DELETEpropertiesF7ED7A92"
+          }
+        ],
+        "/Property-reserve/PropertyApi/Default/properties/DELETE/ApiPermission.Test.PropertyreservePropertyApi67FAD689.DELETE..properties": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PropertyApipropertiesDELETEApiPermissionTestPropertyreservePropertyApi67FAD689DELETEpropertiesF9F792AC"
+          }
+        ],
+        "/Property-reserve/PropertyApi/Default/properties/DELETE/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PropertyApipropertiesDELETE11515BCB"
+          }
+        ],
         "/Property-reserve/PropertyTable": [
           {
             "type": "aws:cdk:hasPhysicalName",
@@ -190,6 +226,42 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "PropertyTableRead2B3AE18A"
+          }
+        ],
+        "/Property-reserve/PropertyTable-Update/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PropertyTableUpdateServiceRoleB885F997"
+          }
+        ],
+        "/Property-reserve/PropertyTable-Update/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PropertyTableUpdateServiceRoleDefaultPolicy8E27C3FF"
+          }
+        ],
+        "/Property-reserve/PropertyTable-Update/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PropertyTableUpdate0E790F72"
+          }
+        ],
+        "/Property-reserve/PropertyTable-Delete/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PropertyTableDeleteServiceRoleC72798A6"
+          }
+        ],
+        "/Property-reserve/PropertyTable-Delete/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PropertyTableDeleteServiceRoleDefaultPolicyF872BEDD"
+          }
+        ],
+        "/Property-reserve/PropertyTable-Delete/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PropertyTableDeleteB2B83B4E"
           }
         ],
         "/Property-reserve/helloLambdaNodeJs/ServiceRole/Resource": [

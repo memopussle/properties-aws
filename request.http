@@ -3,13 +3,23 @@
 GET {{endpoint}}/hello/
 ###
 
-GET {{endpoint}}/properties?propertyId=a379fcd8-48eb-450f-ad76-350616f2a583
+GET {{endpoint}}/properties?propertyId=39f61a47-d86f-49f5-8f90-7c4d5ce6cd0e
 ###
 
-GET {{endpoint}}/properties?status=Completed
+GET {{endpoint}}/properties?status=Pending
 ###
-
 GET {{endpoint}}/properties
+###
+
+PUT {{endpoint}}/properties?propertyId=39f61a47-d86f-49f5-8f90-7c4d5ce6cd0e
+Content-Type: application/json
+
+{
+    "status": "Pending"
+}
+###
+
+DELETE {{endpoint}}/properties?propertyId=a379fcd8-48eb-450f-ad76-350616f2a583
 ###
 
 POST {{endpoint}}/properties/

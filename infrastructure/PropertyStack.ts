@@ -17,6 +17,8 @@ export class PropertyStack extends Stack {
     primaryKey: "propertyId",
     createLambdaPath: "Create",
     readLambdaPath: "Read",
+    updateLambdaPath: "Update",
+    deleteLambdaPath: "Delete",
     secondaryIndexes: ["status"],
   });
 
@@ -50,5 +52,12 @@ export class PropertyStack extends Stack {
     const spaceResource = this.api.root.addResource("properties");
     spaceResource.addMethod("POST", this.propertyTable.createLambdaIntegration);
     spaceResource.addMethod("GET", this.propertyTable.readLambdaIntegration);
+      spaceResource.addMethod(
+        "PUT",
+        this.propertyTable.updateLambdaIntegration
+      );  spaceResource.addMethod(
+        "DELETE",
+        this.propertyTable.deleteLambdaIntegration
+      );
   }
 }

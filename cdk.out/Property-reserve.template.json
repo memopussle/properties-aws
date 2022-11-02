@@ -64,7 +64,7 @@
     "aws:cdk:path": "Property-reserve/PropertyApi/Account"
    }
   },
-  "PropertyApiDeploymentC43FABB3b4e6326ffc7108e5dbd0610c508c2467": {
+  "PropertyApiDeploymentC43FABB37e4da328f0f0e79fa32614b6f129a17b": {
    "Type": "AWS::ApiGateway::Deployment",
    "Properties": {
     "RestApiId": {
@@ -75,8 +75,10 @@
    "DependsOn": [
     "PropertyApihelloGETC23D5417",
     "PropertyApihello48AB3EFD",
+    "PropertyApipropertiesDELETE11515BCB",
     "PropertyApipropertiesGETC2836DF5",
     "PropertyApipropertiesPOSTF7FEF77B",
+    "PropertyApipropertiesPUT23A4F975",
     "PropertyApiproperties99C11FF2"
    ],
    "Metadata": {
@@ -90,7 +92,7 @@
      "Ref": "PropertyApiF83F546E"
     },
     "DeploymentId": {
-     "Ref": "PropertyApiDeploymentC43FABB3b4e6326ffc7108e5dbd0610c508c2467"
+     "Ref": "PropertyApiDeploymentC43FABB37e4da328f0f0e79fa32614b6f129a17b"
     },
     "StageName": "prod"
    },
@@ -518,6 +520,260 @@
     "aws:cdk:path": "Property-reserve/PropertyApi/Default/properties/GET/Resource"
    }
   },
+  "PropertyApipropertiesPUTApiPermissionPropertyreservePropertyApi67FAD689PUTproperties5D240120": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "PropertyTableUpdate0E790F72",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:",
+       {
+        "Ref": "AWS::Region"
+       },
+       ":",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "PropertyApiF83F546E"
+       },
+       "/",
+       {
+        "Ref": "PropertyApiDeploymentStageprod93B9B875"
+       },
+       "/PUT/properties"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "Property-reserve/PropertyApi/Default/properties/PUT/ApiPermission.PropertyreservePropertyApi67FAD689.PUT..properties"
+   }
+  },
+  "PropertyApipropertiesPUTApiPermissionTestPropertyreservePropertyApi67FAD689PUTpropertiesDCB1A81C": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "PropertyTableUpdate0E790F72",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:",
+       {
+        "Ref": "AWS::Region"
+       },
+       ":",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "PropertyApiF83F546E"
+       },
+       "/test-invoke-stage/PUT/properties"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "Property-reserve/PropertyApi/Default/properties/PUT/ApiPermission.Test.PropertyreservePropertyApi67FAD689.PUT..properties"
+   }
+  },
+  "PropertyApipropertiesPUT23A4F975": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "PUT",
+    "ResourceId": {
+     "Ref": "PropertyApiproperties99C11FF2"
+    },
+    "RestApiId": {
+     "Ref": "PropertyApiF83F546E"
+    },
+    "AuthorizationType": "NONE",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:",
+        {
+         "Ref": "AWS::Region"
+        },
+        ":lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "PropertyTableUpdate0E790F72",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "Property-reserve/PropertyApi/Default/properties/PUT/Resource"
+   }
+  },
+  "PropertyApipropertiesDELETEApiPermissionPropertyreservePropertyApi67FAD689DELETEpropertiesF7ED7A92": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "PropertyTableDeleteB2B83B4E",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:",
+       {
+        "Ref": "AWS::Region"
+       },
+       ":",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "PropertyApiF83F546E"
+       },
+       "/",
+       {
+        "Ref": "PropertyApiDeploymentStageprod93B9B875"
+       },
+       "/DELETE/properties"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "Property-reserve/PropertyApi/Default/properties/DELETE/ApiPermission.PropertyreservePropertyApi67FAD689.DELETE..properties"
+   }
+  },
+  "PropertyApipropertiesDELETEApiPermissionTestPropertyreservePropertyApi67FAD689DELETEpropertiesF9F792AC": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "PropertyTableDeleteB2B83B4E",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:",
+       {
+        "Ref": "AWS::Region"
+       },
+       ":",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "PropertyApiF83F546E"
+       },
+       "/test-invoke-stage/DELETE/properties"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "Property-reserve/PropertyApi/Default/properties/DELETE/ApiPermission.Test.PropertyreservePropertyApi67FAD689.DELETE..properties"
+   }
+  },
+  "PropertyApipropertiesDELETE11515BCB": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "DELETE",
+    "ResourceId": {
+     "Ref": "PropertyApiproperties99C11FF2"
+    },
+    "RestApiId": {
+     "Ref": "PropertyApiF83F546E"
+    },
+    "AuthorizationType": "NONE",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:",
+        {
+         "Ref": "AWS::Region"
+        },
+        ":lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "PropertyTableDeleteB2B83B4E",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "Property-reserve/PropertyApi/Default/properties/DELETE/Resource"
+   }
+  },
   "PropertyTable0DBB5666": {
    "Type": "AWS::DynamoDB::Table",
    "Properties": {
@@ -810,6 +1066,250 @@
    "Metadata": {
     "aws:cdk:path": "Property-reserve/PropertyTable-Read/Resource",
     "aws:asset:path": "asset.593f023dd7610f1e109ecafe479418386ad79b125f74799fa455735dd1c89643",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "PropertyTableUpdateServiceRoleB885F997": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "Property-reserve/PropertyTable-Update/ServiceRole/Resource"
+   }
+  },
+  "PropertyTableUpdateServiceRoleDefaultPolicy8E27C3FF": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchWriteItem",
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "PropertyTable0DBB5666",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "PropertyTable0DBB5666",
+             "Arn"
+            ]
+           },
+           "/index/*"
+          ]
+         ]
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "PropertyTableUpdateServiceRoleDefaultPolicy8E27C3FF",
+    "Roles": [
+     {
+      "Ref": "PropertyTableUpdateServiceRoleB885F997"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "Property-reserve/PropertyTable-Update/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "PropertyTableUpdate0E790F72": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+     },
+     "S3Key": "1d61bbbd53c82482233e791b69c4e3273184035ccff7a40f74344b392bb767e9.zip"
+    },
+    "Role": {
+     "Fn::GetAtt": [
+      "PropertyTableUpdateServiceRoleB885F997",
+      "Arn"
+     ]
+    },
+    "Environment": {
+     "Variables": {
+      "TABLE_NAME": "PropertyTable",
+      "PRIMARY_KEY": "propertyId",
+      "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+     }
+    },
+    "FunctionName": "PropertyTable-Update",
+    "Handler": "index.handler",
+    "Runtime": "nodejs14.x"
+   },
+   "DependsOn": [
+    "PropertyTableUpdateServiceRoleDefaultPolicy8E27C3FF",
+    "PropertyTableUpdateServiceRoleB885F997"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "Property-reserve/PropertyTable-Update/Resource",
+    "aws:asset:path": "asset.1d61bbbd53c82482233e791b69c4e3273184035ccff7a40f74344b392bb767e9",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "PropertyTableDeleteServiceRoleC72798A6": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "Property-reserve/PropertyTable-Delete/ServiceRole/Resource"
+   }
+  },
+  "PropertyTableDeleteServiceRoleDefaultPolicyF872BEDD": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchWriteItem",
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "PropertyTable0DBB5666",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "PropertyTable0DBB5666",
+             "Arn"
+            ]
+           },
+           "/index/*"
+          ]
+         ]
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "PropertyTableDeleteServiceRoleDefaultPolicyF872BEDD",
+    "Roles": [
+     {
+      "Ref": "PropertyTableDeleteServiceRoleC72798A6"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "Property-reserve/PropertyTable-Delete/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "PropertyTableDeleteB2B83B4E": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+     },
+     "S3Key": "6fb39d81fb9b166f1bf8f853d8d14927f2fe955dd4df34054142e29976066bad.zip"
+    },
+    "Role": {
+     "Fn::GetAtt": [
+      "PropertyTableDeleteServiceRoleC72798A6",
+      "Arn"
+     ]
+    },
+    "Environment": {
+     "Variables": {
+      "TABLE_NAME": "PropertyTable",
+      "PRIMARY_KEY": "propertyId",
+      "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+     }
+    },
+    "FunctionName": "PropertyTable-Delete",
+    "Handler": "index.handler",
+    "Runtime": "nodejs14.x"
+   },
+   "DependsOn": [
+    "PropertyTableDeleteServiceRoleDefaultPolicyF872BEDD",
+    "PropertyTableDeleteServiceRoleC72798A6"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "Property-reserve/PropertyTable-Delete/Resource",
+    "aws:asset:path": "asset.6fb39d81fb9b166f1bf8f853d8d14927f2fe955dd4df34054142e29976066bad",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }

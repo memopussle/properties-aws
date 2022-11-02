@@ -59,7 +59,7 @@ async function queryWithSecondaryPartition(queryParams: APIGatewayProxyEventQuer
   const queryResponse = await dbClient
     .query({
       TableName: TABLE_NAME!,
-      IndexName: queryKey,
+      IndexName: queryKey,// name of the secondary index
       KeyConditionExpression: "#zz = :zzzz", //-> endpoint: status=Pending
       ExpressionAttributeNames: {
         "#zz": queryKey, 
