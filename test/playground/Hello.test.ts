@@ -2,7 +2,6 @@ import { APIGatewayProxyEvent } from "aws-lambda";
 import { handler } from "../../services/PropertyTable/Create";
 
 const event: APIGatewayProxyEvent = {
-
   body: {
     status: "someName",
     address: "dunedine"

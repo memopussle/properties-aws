@@ -7,6 +7,7 @@ import {
   APIGatewayProxyResult,
   Context,
 } from "aws-lambda"; // Lambda Proxy Intergration: intergrate API route with lambda function
+import { addCorsHeader } from "../Shared/Utils";
 
 const TABLE_NAME = process.env.TABLE_NAME;
 const PRIMARY_KEY = process.env.PRIMARY_KEY;
@@ -20,6 +21,7 @@ const handler = async (
     statusCode: 200,
     body: "hello from dynamodb",
   };
+   addCorsHeader(result);
 
   try {
     // if queryStringParameters exists

@@ -5,6 +5,7 @@ import {
   Context,
 } from "aws-lambda";
 import { v4 } from "uuid";
+import { addCorsHeader } from "../Shared/Utils";
 
 const TABLE_NAME = process.env.TABLE_NAME as string;
 const PRIMARY_KEY = process.env.PRIMARY_KEY as string;
@@ -18,6 +19,8 @@ const handler = async (
     statusCode: 200,
     body: "hello from dynamodb",
   };
+
+   addCorsHeader(result);
   try {
     // get propertyId
     const propertyId = event.queryStringParameters?.[PRIMARY_KEY];
